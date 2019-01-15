@@ -24,4 +24,3 @@ RUN pip install -r requirements.txt
 
 # Copy project
 COPY . /wiki_core/
-

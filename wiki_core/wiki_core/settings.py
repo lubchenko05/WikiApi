@@ -37,6 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+    'rest_framework.authtoken',
+
+    'api.v1',
+    'api.v1.apps.blog',
+    'api.v1.apps.user'
+
+
 ]
 
 MIDDLEWARE = [
@@ -69,17 +78,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wiki_core.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-# settings.py
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': 'db', # set in docker-compose.yml
+        'HOST': 'db',  # set in docker-compose.yml
         'PORT': 5432
     }
 }
