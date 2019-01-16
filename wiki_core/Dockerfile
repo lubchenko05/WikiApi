@@ -6,7 +6,6 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 
-
 # Copy requirements inside docker
 
 COPY ./requirements.txt /wiki_core/requirements.txt
