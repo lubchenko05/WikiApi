@@ -12,6 +12,14 @@ class Post(models.Model):
         verbose_name=_('Title')
     )
 
+    @property
+    def editions_count(self):
+        return self.post_contents.count()
+
+    @property
+    def updated(self):
+        return self.post_contents.get(is_published=True).created
+
     def __str__(self):
         return self.title
 

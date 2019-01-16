@@ -1,0 +1,17 @@
+.inline-group .tabular tr.has_original td {
+    padding-top: 8px;
+}
+
+.original {
+    display: none;
+}
+.publish-status{
+    background: #eeeeee;
+    color: #21c155;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+
+    cursor: not-allowed;
+}
