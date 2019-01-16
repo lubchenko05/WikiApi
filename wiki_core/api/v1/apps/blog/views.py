@@ -9,6 +9,9 @@ from api.v1.apps.blog.serializers import PostContentSerializer
 from . import serializers
 
 
+# TODO: add pagination, ordering, searching
+
+
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     permission_classes = [AllowAny, ]
