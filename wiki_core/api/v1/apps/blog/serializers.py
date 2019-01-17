@@ -1,7 +1,11 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from api.v1.apps.blog.models import Post, PostContent
 from api.v1.apps.user.serializers import AuthorSerializer
+
+
+CurrentUser = get_user_model()
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -17,6 +21,15 @@ class PostSerializer(serializers.ModelSerializer):
             return PostContentSerializer(current_edition, read_only=True).data.get('text', '')
         else:
             return ''
+
+
+class PostCreateSerializer(serializers.ModelSerializer):
+    text = serializers.CharField()
+    author = serializers.PrimaryKeyRelatedField(queryset=CurrentUser.objects.all())
+
+    class Meta:
+        model = Post
+        fields = ['title', 'text', 'author']
 
 
 class PostLiteSerializer(serializers.ModelSerializer):

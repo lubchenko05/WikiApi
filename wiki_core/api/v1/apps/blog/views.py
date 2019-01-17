@@ -5,7 +5,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
 from api.v1.apps.blog.models import Post, PostContent
-from api.v1.apps.blog.serializers import PostContentSerializer
+from api.v1.apps.blog.serializers import PostContentSerializer, PostCreateSerializer
 from . import serializers
 
 
@@ -14,7 +14,30 @@ from . import serializers
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
-    permission_classes = [AllowAny, ]
+
+    def create(self, request):
+        serializer = PostCreateSerializer(
+            data={'author': request.user.pk, 'text': request.POST.get('text'), 'title': request.POST.get('title')}
+        )
+        if serializer.is_valid():
+            post = Post.objects.create(title=serializer.validated_data['title'])
+
+            PostContent.objects.create(
+                text=serializer.validated_data.get('text'),
+                author=request.user,
+                post=post
+            )
+
+            return Response(self.get_serializer_class()(post).data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get_permissions(self):
+        if self.action in ['create', 'update', 'partial_update', 'destroy']:
+            permission_classes = [IsAuthenticated, ]
+        else:
+            permission_classes = [AllowAny, ]
+        return [permission() for permission in permission_classes]
 
     def get_serializer_class(self):
         if self.action == 'list':
@@ -29,8 +52,6 @@ class PostViewSet(viewsets.ModelViewSet):
         post = get_object_or_404(Post, pk=pk)
 
         data = {'text': request.POST.get('text'), 'post': post.pk, 'author': request.user.pk}
-        print(data)
-        print(request.POST)
         serializer = serializers.PostContentEditSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
