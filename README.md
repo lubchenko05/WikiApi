@@ -1,7 +1,7 @@
 # WikiApi
 **API for blog (such as Wikipedia) creation and edition**
 
-###Installation:
+### Installation:
 The project was placed in a docker container.
 To run the project must be installed [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [docker-compose](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04)
 
@@ -23,7 +23,7 @@ sudo docker-compose run web python manage.py test
 sudo docker-compose run web python manage.py createsuperuser
 ```
 
-###API endpoints:
+### API endpoints:
 To send request as user need to pass to Headers:
 `{Authorization: Token <token>}`
 
@@ -85,7 +85,7 @@ Mark post edition as published
 * Args: `post_id - id of the post; id - id of the post edition`
 * Permissions: `Admin users only`
 
-###Task:
+### Task:
    **Разработать сервер сайд с REST JSON API для создания и  управления контентом WiKi страниц.**
 
 **Features requirements:**
