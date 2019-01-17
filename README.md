@@ -4,10 +4,19 @@
 ###Installation:
 The project was placed in a docker container.
 To run the project must be installed [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [docker-compose](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04)
+
+
+
 ####To start the server you need to execute one simple command:
 ```bash
 sudo docker-compose up --build
 ```
+
+####To run tests (with covarage) you need to execute:
+```bash
+sudo docker-compose run web coverage run --source='.' manage.py test
+```
+
 
 ####To create superuser:
 ```bash
