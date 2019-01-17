@@ -85,6 +85,19 @@ Mark post edition as published
 * Args: `post_id - id of the post; id - id of the post edition`
 * Permissions: `Admin users only`
 
+
+### Additional features:
+#### Admin pages:
+
+**Post list (with search)**
+![Post list admin panel](wiki_core/static/github_images/post-list.jpg)
+
+**Post content list (with search and filters)**
+![Post content list admin panel](wiki_core/static/github_images/post-content-list.jpg)
+
+**Post edit (able to change title and publish edition)**
+![Post edit admin panel](wiki_core/static/github_images/post-edit.jpg)
+
 ### Task:
    **Разработать сервер сайд с REST JSON API для создания и  управления контентом WiKi страниц.**
 
