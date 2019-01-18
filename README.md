@@ -52,7 +52,7 @@ Get detail information about specific post
 Create new post
 * Type: `POST`
 * URL: `/api/v1/post/`
-* Args: `'title' - charfield`
+* Args: `'title' - charfield, text - textfield`
 * Permissions: `Allow any`
 
 **Post edit**
